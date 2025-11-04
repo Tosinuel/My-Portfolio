@@ -73,17 +73,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
       return r.text();
     }).then(txt=>{
       contentEl.innerHTML = `<pre>${escapeHtml(txt)}</pre>`;
-      // animate open by setting explicit maxHeight then remove it so content can be responsive
       setTimeout(()=>{
         contentEl.classList.add('open');
-        // set to measured height to animate
-        contentEl.style.maxHeight = contentEl.scrollHeight + 'px';
-        const tidy = ()=>{
-          // after transition, remove maxHeight so content can reflow responsively
-          contentEl.style.maxHeight = 'none';
-          contentEl.removeEventListener('transitionend', tidy);
-        };
-        contentEl.addEventListener('transitionend', tidy);
+        // Just add open class, max-height handled by CSS now
+        contentEl.parentElement.scrollTop = 0; // Reset scroll position
       },20);
     }).catch(err=>{
       contentEl.innerHTML = `<p class="muted">Content not available locally. To load the real project text, place a file at <code>content/${filename}</code> or run the included extraction script which converts the Word documents into text files.</p>`;

@@ -24,9 +24,10 @@ body{margin:0;font-family:Inter,Segoe UI,Helvetica,Arial,sans-serif;background:v
 .project-button{background:#fff;border:1px solid #e6eef0;padding:.5rem .75rem;border-radius:8px;cursor:pointer;transition:transform .15s ease, box-shadow .15s ease}
 .project-button:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(11,114,133,0.12)}
 .project-button[aria-pressed="true"]{background:linear-gradient(180deg,#e6fbff,#dff7fa);border-color:var(--accent)}
-.project-detail{background:#fff;border-radius:8px;padding:1rem;border:1px solid #e6eef0;min-height:80px;transition:all .2s ease;overflow:hidden}
-.project-content{opacity:0;max-height:0;transform-origin:top;transition:max-height .28s ease,opacity .28s ease;padding:0;overflow:hidden}
-.project-content.open{opacity:1;padding:1rem 0}
+.project-detail{background:#fff;border-radius:8px;padding:1rem;border:1px solid #e6eef0;max-height:600px;transition:all .2s ease;overflow-y:auto}
+.project-content{opacity:0;max-height:0;transform-origin:top;transition:max-height .28s ease,opacity .28s ease;padding:0;overflow-x:auto;overflow-y:visible}
+.project-content.open{opacity:1;padding:1rem 0;max-height:none}
+.project-content pre{white-space:pre-wrap;word-wrap:break-word;max-width:100%}
 .skills-list{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;padding:0;margin:0}
 .skills-list li{background:#fff;padding:.5rem .75rem;border-radius:6px;border:1px solid #e6eef0}
 .site-footer{padding:.75rem 0;text-align:center;background:transparent;color:var(--muted)}
