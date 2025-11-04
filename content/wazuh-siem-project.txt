@@ -1,0 +1,54 @@
+Incident Handler’s Journal
+Analyst: Emmanuel
+Organization: Buttercup Games
+Date: September 24, 2025
+System Investigated: Mail Server (mailsv)
+Tool Used: Wazuh SIEM Dashboard
+________________________________________
+Investigation Summary
+Today’s task focused on identifying potential security issues related to failed SSH login attempts targeting the root account on Buttercup Games’ mail server. The investigation was conducted using the Wazuh dashboard to analyze authentication logs and event data.
+________________________________________
+Step-by-Step Investigation
+1. Accessing the Wazuh Dashboard
+•	Verified that the Wazuh VM was running.
+•	Retrieved the IP address using ip a.
+•	Accessed the dashboard via https://<VM_IP>.
+2. Verifying Data Ingestion
+•	Navigated to Explore > Discover.
+•	Set the time range to Absolute, starting from January 1, 2000.
+•	Ran a wildcard query *.
+•	Confirmed ingestion with over 100,000 events retrieved.
+3. Field Evaluation
+•	Examined key fields: host.keyword, log.file.path.keyword, source, and sourcetype.
+•	Identified five hosts: 
+o	mailsv (mail server)
+o	www1, www2, www3 (web apps)
+o	vendor_sales (retail data)
+•	Focused on /mailsv/secure.log for authentication-related events.
+4. Narrowing the Search
+•	Filtered events to only those from the mail server: 
+•	host.keyword: mailsv
+•	Resulted in over 9,000 events.
+5. Targeting Failed SSH Logins for Root
+•	Refined query to: 
+•	host.keyword: mailsv AND (fail* OR failed) AND root
+•	Retrieved over 300 events indicating failed SSH login attempts for the root account.
+________________________________________
+Findings & Observations
+•	Multiple failed SSH login attempts targeting the root account were observed.
+•	These attempts originated from various IP addresses, suggesting possible brute-force activity.
+•	The frequency and volume of failures raise concerns about targeted intrusion attempts.
+________________________________________
+Recommended Actions
+•	Immediate:
+o	Implement IP-based rate limiting and account lockout policies.
+o	Disable direct root SSH access and enforce key-based authentication.
+•	Monitoring:
+o	Set up alerts for repeated failed login attempts.
+o	Continue monitoring /mailsv/secure.log for anomalies.
+•	Long-Term:
+o	Conduct a full audit of SSH access policies.
+o	Educate internal teams on secure access protocols.
+________________________________________
+Status
+Investigation complete. Mitigation steps initiated. Awaiting confirmation from the network team on policy updates.

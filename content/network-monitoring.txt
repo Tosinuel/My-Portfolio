@@ -1,0 +1,53 @@
+Incident Handler’s Journal
+Role: SOC Analyst – Network Monitoring
+Date: September 19, 2025
+Analyst: Emmanuel (Linux user: analyst)
+Environment: Linux Virtual Machine
+Tool Used: tcpdump
+________________________________________
+Objective
+To capture and analyze live network traffic using tcpdump on a Linux VM. The goal is to identify active interfaces, apply filters to isolate relevant traffic, and examine a sample packet capture file for deeper insights.
+________________________________________
+Step 1: Identifying Network Interfaces
+Executed the following command to list all available network interfaces:
+tcpdump -D
+Observation:
+The system returned a list of interfaces including eth0, lo, and any. Chose eth0 as the primary interface for external traffic monitoring.
+________________________________________
+Step 2: Filtering Live Network Traffic
+To reduce noise and focus on meaningful data, applied a filter to capture only HTTP traffic:
+sudo tcpdump -i eth0 port 80
+Observation:
+Captured several packets indicating outbound HTTP requests. This helped isolate web-based activity for further inspection.
+________________________________________
+Step 3: Capturing Network Traffic
+Initiated a full capture session with timestamp and verbose output:
+sudo tcpdump -i eth0 -w live_capture.pcap -vv
+Observation:
+The capture ran for 5 minutes during peak traffic. Saved the output to live_capture.pcap for offline analysis.
+________________________________________
+Step 4: Filtering Captured Packet Data
+Used tcpdump to read and filter the saved capture file:
+tcpdump -r live_capture.pcap host 192.168.1.10
+Observation:
+Filtered traffic revealed multiple TCP connections between the internal host and an external IP. Noted unusual packet sizes and timing intervals, possibly indicating data exfiltration or beaconing behavior.
+________________________________________
+Final Analysis of Sample Packet File
+Loaded the sample packet capture file from the home directory:
+tcpdump -r sample_traffic.pcap
+Findings:
+•	Detected DNS queries to suspicious domains
+•	Identified malformed packets suggesting potential scanning activity
+•	Noted repeated SYN packets without ACKs, indicating possible port scanning
+________________________________________
+Lessons Learned
+•	tcpdump remains a powerful tool for real-time and offline traffic analysis
+•	Filtering before capture reduces post-processing workload
+•	Always validate interface selection to avoid missing critical traffic
+________________________________________
+Next Steps
+•	Correlate findings with SIEM logs
+•	Submit suspicious domains for threat intelligence lookup
+•	Recommend firewall rule updates to block identified IPs
+________________________________________
+

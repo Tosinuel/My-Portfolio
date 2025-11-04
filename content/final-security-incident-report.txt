@@ -1,0 +1,52 @@
+Final Security Incident Report
+Incident Title: E-Commerce Data Breach – Over One Million User Records
+Report Date: September 22, 2025
+Prepared By: Emmanuel, SOC Analyst (Level 1)
+Company: New E-Commerce Dot Com
+________________________________________
+Executive Summary
+On 10th of September, 2025, the company experienced a significant cybersecurity incident involving unauthorized access to its e-commerce platform. The breach resulted in the exposure of personally identifiable information (PII) of over one million users. This report outlines the incident timeline, response actions, and recommendations to prevent recurrence.
+________________________________________
+Incident Description
+What Happened:
+An attacker exploited a vulnerability in the company’s e-commerce web application, gaining access to the backend database. The breach exposed sensitive customer data including names, email addresses, hashed passwords, and partial credit card information.
+Attack Vector:
+•	SQL Injection via a poorly sanitized input field on the login page
+•	Lack of Web Application Firewall (WAF) protection
+•	Inadequate logging and monitoring of anomalous traffic
+________________________________________
+Timeline of Events
+Date & Time	Event
+10/09/25	Initial breach occurred via SQL injection
+10/09/25	Suspicious traffic detected by third-party threat intelligence feed
+10/09/25	Internal investigation initiated by SOC team
+11/09/25	Breach confirmed; incident escalated to executive leadership
+11/09/25	Affected systems isolated and patched
+12/09/25	Notification sent to affected users and regulatory bodies
+________________________________________
+Response Actions Taken
+•	Containment: Immediate isolation of compromised servers
+•	Eradication: Removal of malicious scripts and patching of vulnerable code
+•	Recovery: Restoration of services from clean backups
+•	Notification: Disclosure to affected users and compliance with GDPR and local data protection laws
+•	Forensics: Full investigation conducted with third-party cybersecurity firm
+•	Monitoring: Enhanced logging and real-time alerting implemented
+________________________________________
+Impact Assessment
+•	Users Affected: ~1.2 million
+•	Data Compromised: PII, hashed passwords, partial payment data
+•	Business Impact: Temporary shutdown of e-commerce platform, reputational damage, regulatory scrutiny
+•	Financial Impact: Estimated loss of $2.5 million including legal fees and customer compensation
+________________________________________
+Recommendations for Future Prevention
+•	Implement a robust Web Application Firewall (WAF)
+•	Conduct regular vulnerability assessments and penetration testing
+•	Enforce secure coding practices and developer training
+•	Enable multi-factor authentication (MFA) for all admin accounts
+•	Deploy Security Information and Event Management (SIEM) for real-time monitoring
+•	Establish an Incident Response Plan (IRP) with tabletop exercises
+•	Encrypt sensitive data at rest and in transit
+________________________________________
+Conclusion
+This breach underscores the critical importance of proactive security measures in protecting customer data. The company has taken significant steps to remediate the issue and strengthen its cybersecurity posture. Continued vigilance and investment in security infrastructure are essential to safeguarding future operations.
+

@@ -1,0 +1,45 @@
+Incident Handler’s Journal
+Role: Level 1 SOC Analyst
+Organization: Financial Services Company
+Date: September 22, 2025
+Incident ID: FS-SEC-20251002-001
+Analyst: Emmanuel
+________________________________________
+Incident Summary
+At 1:20 p.m., our intrusion detection system (IDS) flagged suspicious activity on an employee workstation. The alert was triggered by the creation of multiple unauthorized executable files. Initial investigation revealed the source to be a password-protected spreadsheet file downloaded via email. The file executed a malicious payload upon opening.
+________________________________________
+Timeline of Events
+Time	Event Description
+1:11 p.m.	Employee receives email with attachment.
+1:13 p.m.	Employee downloads and opens the spreadsheet using the provided password.
+1:15 p.m.	Malicious payload executes, creating unauthorized executables.
+1:20 p.m.	IDS detects activity and sends alert to SOC.
+________________________________________
+Investigation Actions
+•	Retrieved the suspicious file and generated its SHA256 hash:
+54e6ea47eb04634d3e87fd7787e2136ccfbcc80ade34f246a12cf93bab527f6b
+•	Uploaded the hash to VirusTotal for analysis.
+•	Identified additional indicators of compromise (IoCs) from the VirusTotal report.
+________________________________________
+Pyramid of Pain IoCs
+IoC Type	Value	Source Tab
+Hash Value	SHA1: 8f35a9e70dbec8f1904991773f394cd4f9a07f5e	Details
+IP Address	185.62.189.60	Behavior > IP Traffic
+Domain Name	flagpro.blacktech.org (associated with BlackTech malware)	Relations > Domains
+________________________________________
+Observations & Notes
+•	The malware is linked to the BlackTech threat actor group and identified as Flagpro, a known payload used in targeted attacks.
+•	The spreadsheet file was used as a delivery mechanism, exploiting user trust and bypassing basic email filters.
+•	The payload created executables that communicated with external IPs and domains, indicating command-and-control (C2) behavior.
+•	VirusTotal sandbox analysis revealed MITRE ATT&CK TTPs such as: 
+o	T1059.003 – Command and Scripting Interpreter: Windows Command Shell
+o	T1204.002 – User Execution: Malicious File
+o	T1105 – Remote File Copy
+________________________________________
+Next Steps
+•	Isolate the affected workstation.
+•	Block IP 185.62.189.60 and domain flagpro.blacktech.org across the network.
+•	Update detection rules to flag similar spreadsheet-based payloads.
+•	Notify internal threat intelligence team for further analysis and correlation.
+•	Educate employees on phishing awareness and safe email practices.
+

@@ -1,0 +1,15 @@
+{
+  "name": "portfolio-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portfolio site for Emmanuel Oluwatosin",
+  "scripts": {
+    "start": "live-server --port=5500 --open=./index.html",
+    "extract": "node scripts/extract-docx.js",
+    "lint": "echo \"No lints configured; add htmlhint/stylelint/eslint as needed\""
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "mammoth": "^1.4.18"
+  }
+}

@@ -1,0 +1,54 @@
+Incident handler's journal
+
+Cybersecurity Incident Handler's Journal
+
+Date: 
+
+September 18, 2025
+
+Journal Entry Number:
+
+20250918-001
+
+Description
+
+Initial journal entry documenting a ransomware attack reported by a U.S. health care clinic. The incident has resulted in the encryption of critical files, including medical records, and a complete shutdown of business operations. A ransom demand has been made.
+
+Cybersecurity Tools Used
+
+None at this initial stage of documentation. Analysis will require tools such as Endpoint Detection and Response (EDR), Security Information and Event Management (SIEM), network traffic analysis tools, and digital forensics software.
+
+Incident Details (The 5 W's) 
+
+Who caused the incident? The incident was caused by an organized group of unethical hackers. According to the ransom note, this group is known to target organizations in the healthcare and transportation industries. The specific group name is not yet identified.
+
+What happened? A ransomware attack was deployed on the clinic's network. This resulted in the encryption of critical files, including patient medical records, making them inaccessible. A ransom note was displayed on affected computers demanding a large sum of money in exchange for a decryption key. Consequently, the clinic was forced to shut down all computer systems, halting business operations.
+
+When did the incident occur? The incident was discovered on a Tuesday morning at approximately 9:00 a.m. (The specific date of the Tuesday was not provided in the initial report).
+
+Where did the incident happen? The incident occurred on the internal computer network of a small U.S. health care clinic. Employee workstations were directly affected, and it is presumed that servers containing patient data were also impacted.
+
+Why did the incident happen? The initial attack vector was a targeted phishing email campaign. At least one employee was socially engineered into downloading and opening a malicious attachment from a phishing email. This action installed malware on their computer, which provided the attackers with initial access to the network, allowing them to deploy the ransomware.
+
+
+
+Thoughts and Questions [Additional Note]
+
+Scope Assessment: What is the full scope of the incident? How many workstations and servers are encrypted? Has the Electronic Health Record (EHR) system been compromised? Are backups affected, and if so, are they online or offline (air-gapped)?
+
+Containment: The clinic has "shut down their computer systems." Does this mean the systems are powered off, or have they been successfully isolated from the network to prevent further spread? We need to confirm the containment strategy immediately.
+
+Initial Vector: We must obtain a copy of the phishing email and the malicious attachment for analysis. Identifying Indicators of Compromise (IOCs) like sender email, attachment hash, and C2 domains is a top priority. Who received the email, and who clicked the attachment?
+
+Backup & Recovery: What is the clinic's backup policy? When was the last successful backup? More importantly, when was the last successful test restore? The viability of backups is the most critical factor in determining the recovery path.
+
+Patient Care & Safety: What is the immediate impact on patient care? How is the clinic managing appointments and patient needs without access to records? Is there a risk to patient safety? This is paramount in a healthcare setting.
+
+Reporting & Compliance: The clinic has contacted "several organizations." We need a specific list. Have they contacted law enforcement (e.g., the FBI)? Have they contacted the Cybersecurity and Infrastructure Security Agency (CISA)? Given this is a healthcare provider, Health and Human Services (HHS) must be notified under HIPAA regulations. We need to assess the timeline for breach notification requirements.
+
+Threat Actor: Can we attribute this attack to a specific known ransomware group based on the ransom note's text, file extensions of encrypted files, or other TTPs? This could inform us of their typical behavior (e.g., do they exfiltrate data before encrypting, do they actually provide a decryptor upon payment?).
+
+Ransom Demand: What is the specific amount demanded? What is the currency (likely cryptocurrency)? What is the deadline? Has any communication been established with the threat actors? What is the clinic's official stance on paying the ransom?
+
+
+

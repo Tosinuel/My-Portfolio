@@ -1,0 +1,43 @@
+SOC Analyst Journal Entry: Suricata Rule Testing Lab
+Date: September 23, 2025
+Role: Entry-Level SOC Analyst
+Objective: Monitor network traffic using Suricata, configure custom rules, and analyze alert logs.
+________________________________________
+Lab Overview
+Today’s lab focused on using Suricata to monitor network traffic and trigger alerts based on custom rules. I was provided with two key files:
+•	sample.pcap: A packet capture file simulating network traffic.
+•	custom.rules: A file where I added and tested Suricata rules.
+The goal was to configure Suricata to detect specific traffic patterns and verify alerts using two output files: fast.log and eve.json.
+________________________________________
+Step-by-Step Process
+1. Exploring Custom Rules
+I began by reviewing the syntax and structure of Suricata rules. Each rule includes elements like action (alert), protocol (tcp, udp, etc.), source/destination IPs and ports, and a message (msg) to describe the alert.
+Example rule format:
+alert tcp any any -> any 80 (msg:"HTTP traffic detected"; sid:1000001; rev:1;)
+I added a custom rule to custom.rules targeting HTTP traffic on port 80.
+2. Running Suricata with Custom Rule
+To test the rule, I executed Suricata against the sample.pcap file using the following command:
+sudo suricata -r ~/sample.pcap -l /var/log/suricata/ -c /etc/suricata/suricata.yaml
+This triggered Suricata to analyze the packet capture and apply the custom rule.
+3. Examining fast.log
+After execution, I checked /var/log/suricata/fast.log. This file quickly confirmed whether my rule triggered an alert. I saw a new line indicating that the rule matched traffic in the pcap file.
+Although fast.log is deprecated for incident response, it was useful for quick validation.
+4. Reviewing eve.json
+Next, I examined /var/log/suricata/eve.json, which provided a detailed JSON-formatted log of the alert. It included:
+•	Timestamp
+•	Alert message
+•	Source and destination IPs
+•	Protocol and port
+•	Rule SID and revision
+This file is essential for deeper analysis and integration with SIEM tools.
+________________________________________
+Key Learnings
+•	Suricata rules are highly customizable and powerful for detecting specific traffic patterns.
+•	fast.log is useful for quick checks, but eve.json is the go-to for comprehensive alert data.
+•	Testing rules against a known pcap file helps validate detection logic before deploying in production.
+________________________________________
+Next Steps
+•	Practice writing more complex rules (e.g., detecting specific payloads or DNS queries).
+•	Explore integrating Suricata output with a SIEM platform.
+•	Learn how to tune rules to reduce false positives.
+

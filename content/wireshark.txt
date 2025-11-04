@@ -1,0 +1,57 @@
+________________________________________
+Incident Handler’s Journal
+Security Operations Center (SOC) Analyst Report
+Date: September 19, 2025
+Analyst: Emmanuel
+Tool Used: Wireshark
+Incident Title: First Packet Analysis – Web Traffic Investigation
+________________________________________
+Overview
+As a newly assigned SOC analyst, today I had hands-on experience analyzing network traffic using Wireshark. The objective was to investigate a user’s connection to a website by examining a packet capture (PCAP) file. This exercise aimed to develop my proficiency in filtering traffic, identifying IP addresses, understanding protocols, and interpreting payload data.
+________________________________________
+Step 1: Exploring the Wireshark Interface
+Upon launching Wireshark, I was greeted with its intuitive graphical user interface. I loaded the provided PCAP file and observed the live packet list pane, the detailed packet view pane, and the hexadecimal data pane. These panes offered a layered view of each packet, from summary to raw data.
+________________________________________
+Step 2: Identifying Source and Destination IPs
+Using the filter http and ip.addr, I isolated packets related to web browsing. I identified:
+•	Source IP Address: 192.168.1.101 (internal user)
+•	Destination IP Address: 93.184.216.34 (external website, likely example.com)
+This confirmed the user initiated a connection to a public web server.
+________________________________________
+Step 3: Examining Protocols Used
+I applied the filter http || dns || tcp || udp to inspect the protocols involved. The session revealed:
+•	DNS (UDP): Used to resolve the domain name to an IP address.
+•	TCP: Established a reliable connection.
+•	HTTP: Facilitated the actual web content exchange.
+Each protocol played a distinct role in the browsing session, from name resolution to data transmission.
+________________________________________
+Step 4: Deep Packet Inspection
+I selected a TCP packet and expanded its layers:
+•	Ethernet II: Source and destination MAC addresses.
+•	IP Layer: Confirmed IP routing.
+•	TCP Layer: Showed port numbers and sequence numbers.
+•	HTTP Layer: Revealed GET request for /index.html.
+This inspection highlighted how each layer contributes to the overall communication.
+________________________________________
+Step 5: Filtering UDP DNS Traffic
+Using the filter udp.port == 53, I isolated DNS queries. One notable query was:
+•	Query: example.com
+•	Response: 93.184.216.34
+This confirmed the user’s intent to visit the site and the successful resolution of the domain.
+________________________________________
+Step 6: Analyzing TCP Payloads
+I applied the filter tcp contains "GET" to locate HTTP GET requests. The payload revealed:
+GET /index.html HTTP/1.1
+Host: example.com
+User-Agent: Mozilla/5.0
+This showed the user requested the homepage of the site using a standard browser.
+________________________________________
+Conclusion
+This exercise provided a foundational understanding of packet analysis using Wireshark. 
+I successfully:
+•	Identified source and destination IPs.
+•	Traced the protocol stack from DNS to HTTP.
+•	Inspected payloads for meaningful data.
+This experience reinforced the importance of packet-level visibility in cybersecurity investigations and highlighted Wireshark’s power as a diagnostic and forensic tool.
+________________________________________
+
