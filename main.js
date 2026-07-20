@@ -1,6 +1,7 @@
 // main.js — accessible interactive behavior
 
 const projects = [
+  { id: 'linda-darling-platform', title: 'Linda Darling Platform', source: 'Linda Darling Platform.docx' },
   { id: 'final-security-pt2', title: 'Final Security Incident Report pt2', source: 'Final Security Incident Report pt2.docx' },
   { id: 'sha256-hash', title: 'SHA256 hash', source: 'SHA256 hash.docx' },
   { id: 'network-monitoring', title: 'Network Monitoring', source: 'Network Monitoring.docx' },

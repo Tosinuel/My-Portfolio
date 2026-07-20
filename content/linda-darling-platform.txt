@@ -1,0 +1,25 @@
+Project Title: Linda Darling Platform
+
+Date: 19/07/2026
+
+Role: Full-Stack Developer & Security Lead
+
+Tech Stack: Node.js, Express, MySQL, Sharp (Image Processing), Socket.io, Linux/cPanel Server Environment
+
+Executive Summary
+
+Engineered and deployed a robust, scalable backend infrastructure for a high-traffic personal brand platform. The project demonstrates end-to-end management of a web application lifecycle, from architectural design and database integration to server-side optimization and secure deployment within a Linux-based production environment.
+
+Key Technical Achievements
+
+- Infrastructure & Deployment: Managed the full deployment pipeline, transitioning from local development to a production-ready cPanel server environment. Configured the Node.js runtime and environment-specific dependencies to ensure high availability and 99.9% uptime.
+- Performance Optimization: Integrated and configured sharp for high-performance image processing and optimization, significantly reducing load times for media-heavy pages without compromising quality.
+- API Development: Architected a RESTful API suite supporting secure user authentication (bcryptjs/JWT), real-time communication (Socket.io), and CRUD operations for musical/blog content management.
+- Database Management: Designed and implemented a normalized MySQL schema to efficiently manage multi-relational data, including blog metadata, musical library assets, and user session state.
+
+Security & Operations Perspective (The "Cloud Security Analyst" Edge)
+
+- Secure Environment Hardening: Implemented principle-of-least-privilege practices in a multi-tenant hosting environment, navigating CloudLinux constraints to ensure isolated and secure dependency management.
+- Vulnerability Remediation: Performed manual audit and dependency management, mitigating risks associated with outdated packages and ensuring compliance with modern security standards (e.g., proper handling of sensitive environment variables using dotenv).
+- System Integrity: Implemented error handling and recovery protocols, including automated process management and log monitoring to ensure the system remains resilient against service disruptions.
+- Access Control: Developed secure session management and authentication workflows, ensuring robust protection of admin-level endpoints and user data integrity.
