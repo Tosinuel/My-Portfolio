@@ -1,0 +1,83 @@
+Project Title: Titun Music Market
+
+Live Production URL: https://titunmusicmarket.com
+
+GitHub Repository: git@github.com:Tosinuel/Titun-Music-Market.git [private repo]
+
+Engineer: Emmanuel Oluwatosin [Tosinuel]
+
+Roles: Fullstack Software Engineer | Cybersecurity Analyst | Cloud Security Engineer
+
+________________________________________
+
+Executive Summary
+Titun Music Market is a scalable, cloud-hosted web application designed for digital media distribution, e-commerce, and direct-to-consumer artist engagements. The project involved end-to-end architecture design, fullstack application logic development, automated Git deployment pipelines, web server hardening, and cloud security posture management.
+
+________________________________________
+
+Technical Stack Overview
+Domain	Technology / Tools Used
+Frontend & Views	HTML5, CSS3, Modern JavaScript (ES6+), EJS / Partial Templating Engine
+Backend Architecture	Node.js / Express (Server-side rendering & dynamic asset handling)
+Database & Media	MySQL / Relational Database Engine, Local & Cloud Asset Storage
+Server & Hosting Environment	Linux (CentOS/AlmaLinux), cPanel Architecture, Apache/Nginx Reverse Proxy
+Version Control & CI/CD	Git, GitHub (SSH-authenticated remote repos), cPanel Deployment Hooks
+Security & Auth Tools	SSH (Ed25519 Public Key Cryptography), TLS/SSL Encryption, Linux File Permissions
+
+________________________________________
+
+Detailed Technical Contributions & Architecture
+1. 💻 Fullstack Software Engineering
+•	Modular View Engine Architecture: Designed and implemented reusable view partials (e.g., views/partials/whatsapp-float.ejs) to optimize UI reusability, maintainability, and clean DOM rendering across the site.
+•	Database & Dynamic Content Routing: Built backend routes and data access layers to dynamically serve audio previews, metadata, digital assets, and customer interactions without latency overhead.
+•	Responsive Frontend Interactivity: Standardized UI/UX cross-device compatibility, ensuring optimal mobile performance and fast viewport paint times.
+
+2. 🔐 Cybersecurity Engineering & Hardening
+•	Zero-Password Cryptographic Authentication: Enforced strict Ed25519 SSH key pair generation for server access, eliminating password-based brute-force attack vectors on port 22.
+•	Repository Isolation & Threat Mitigation: Configured private GitHub repository linkages using authenticated SSH deployment tokens to prevent unauthorized source code access or exposure of sensitive configurations.
+•	Least Privilege Principle (PoLP): Configured strict Linux directory permissions (755 for directories, 644 for files) across web root directories (public_html / project folders) to prevent unauthorized file execution or cross-site scripting (XSS) payload drops.
+•	In-Transit Encryption (TLS/SSL): Enforced HTTPS redirection and strong cipher suites across web server endpoints to protect transaction data and media transfers.
+
+3. ☁️ Cloud Security & Infrastructure Management
+•	Cloud Hosting Administration: Managed live cloud deployment on Linux infrastructure using cPanel/WHM environments, ensuring isolated process execution (highcliq execution sandbox).
+•	Git-Driven Automated CI/CD Workflows:
+o	Initialized local version control inside the cPanel environment.
+o	Standardized main branch tracking (main -> origin/main).
+o	Automated push-to-deploy workflows directly from cPanel terminal environments to GitHub remote repositories.
+•	Storage & Operational Monitoring: Monitored web server storage footprints, tracking build objects (88+ compressed project objects committed via delta compression) and maintaining real-time operational status via Git working tree audits (git status).
+
+________________________________________
+
+Security Audit & Vulnerability Assessment Summary
+Plaintext
++------------------------------------+----------------------------+-----------------------+
+| Audit Vector                       | Risk Assessment Prior      | Mitigation Strategy   |
++------------------------------------+----------------------------+-----------------------+
+| Server Access Control              | High (Password / Standard) | Ed25519 SSH Keys      |
+| Code Repository Integrity          | High (Public/Unsecured)    | Private Git + Remote  |
+| Code Deployment Vector             | Medium (Manual FTP Drops)  | Version-Controlled    |
+| Endpoint Encryption                | Critical                   | Automated TLS Certificate|
++------------------------------------+----------------------------+-----------------------+
+
+________________________________________
+
+Deployment & Verification Workflow Log
+Bash
+# SSH Keypair Generation & Verification
+ssh-keygen -t ed25519 -C "cpanel-titunmusic"
+ssh -T git@github.com # Output: Successfully authenticated
+
+# Git Initialization & Initial Push
+git init
+git branch -M main
+git add .
+git commit -m "Initial commit"
+git remote add origin git@github.com:Tosinuel/Titun-Music-Market.git
+git push -u origin main
+
+________________________________________
+
+💡 Key Accomplishments & Metrics
+•	100% Secure Remote Access: Zero reliance on unencrypted protocols or static passwords.
+•	Zero-Downtime Deployment Setup: Established a clean version control pipeline allowing seamless server code synchronization with remote GitHub repositories.
+•	Clean Working Tree: Verified initial deployment state with nothing to commit, working tree clean.

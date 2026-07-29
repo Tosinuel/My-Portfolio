@@ -1,6 +1,7 @@
 // main.js — accessible interactive behavior
 
 const projects = [
+  { id: 'titun-music-market', title: '🎵 Project Report: Titun Music Market', source: 'Titun Music Market.docx' },
   { id: 'linda-darling-platform', title: 'Linda Darling Platform', source: 'Linda Darling Platform.docx' },
   { id: 'final-security-pt2', title: 'Final Security Incident Report pt2', source: 'Final Security Incident Report pt2.docx' },
   { id: 'sha256-hash', title: 'SHA256 hash', source: 'SHA256 hash.docx' },
@@ -12,6 +13,7 @@ const projects = [
   { id: 'suricata', title: 'Alerts, logs, and rules with Suricata', source: 'Alerts, logs, and rules with Suricata.docx' }
 ];
 
+
 function safeFilename(title){
   return title.replace(/[^a-z0-9]+/gi, '-').replace(/(^-|-$)/g, '').toLowerCase();
 }
@@ -22,18 +24,25 @@ document.addEventListener('DOMContentLoaded', ()=>{
   const detail = document.getElementById('project-detail');
 
   // create buttons
-  projects.slice(0,8).forEach(p => {
+  projects.slice(0,8).forEach((p, index) => {
     const btn = document.createElement('button');
-    btn.className = 'project-button';
+    btn.className = 'project-button' + (index === 0 ? ' featured' : '');
     btn.type = 'button';
     btn.textContent = p.title;
     btn.setAttribute('aria-pressed','false');
     btn.dataset.id = p.id;
     btn.dataset.source = p.source;
+
+    if(index === 0){
+      btn.setAttribute('aria-label', p.title + ' (Featured project)');
+      btn.title = p.title + ' — Featured';
+    }
+
     btn.addEventListener('click',toggleProject);
     btn.addEventListener('keyup', (e)=>{ if(e.key === 'Enter' || e.key === ' ') toggleProject.call(btn, e); });
     btnContainer.appendChild(btn);
   });
+
 
   // nav toggle for small screens
   const navToggle = document.getElementById('nav-toggle');
@@ -95,7 +104,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
   function escapeHtml(s){
     return s.replace(/[&<>"']/g, c=>({
-      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"
+      '&':'&amp;','<':'<','>':'>','"':'"',"'":"&#39;"
     }[c]));
   }
 
